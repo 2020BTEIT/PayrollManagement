@@ -59,6 +59,37 @@ public double calculateSalary()
 class Payrollsystem
 {
     private ArrayList<Employee>employeelist;
+    public Payrollsystem()
+    {
+        employeelist=new ArrayList<>();
+    }
+    public void addemployee(Employee e)
+    {
+        employeelist.add(e);
+    }
+    public  void removeemployee(int id)
+    {
+        Employee e=null;
+        for(Employee e1:employeelist)
+        {
+          if(e1.getId()==id)
+          {
+              e=e1;
+              break;
+          }
+        }
+        if(e!=null)
+        {
+            employeelist.remove(e);
+        }
+    }
+    public void displayemployee()
+    {
+        for(Employee e:employeelist)
+        {
+            System.out.println(e);
+        }
+    }
 
 }
 
@@ -68,6 +99,16 @@ class Payrollsystem
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Payrollsystem p=new Payrollsystem();
+        FullTimeEmployee f=new FullTimeEmployee("Vikas",2,2000);
+        PartTimeEmployee pt=new PartTimeEmployee("Harshad",1,7,200);
+        p.addemployee(f);
+        p.addemployee(pt);
+        System.out.println("Initial Employee details:");
+        p.displayemployee();
+        System.out.println("Removing employee details");
+        p.removeemployee(2);
+        System.out.println("Remaining Employee details:");
+        p.displayemployee();
     }
 }
